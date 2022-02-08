@@ -15,11 +15,11 @@ This is the official PyTorch implementation of the [ContrastiveCrop paper](https
 
 ## Pre-train
 ```
-# MoCo
+# MoCo, CIFAR-10
 python DDP_moco_ccrop.py configs/small/cifar10/moco_alpha0.1_th0.1.py
 
-# SimSiam
-python DDP_simsiam_ccrop.py configs/small/cifar10/simsiam_alpha0.1_th0.1.py
+# SimSiam, CIFAR-100
+python DDP_simsiam_ccrop.py configs/small/cifar100/simsiam_alpha0.1_th0.1.py
 ```
 ## Linear Evaluation
 ```
@@ -27,7 +27,7 @@ python DDP_simsiam_ccrop.py configs/small/cifar10/simsiam_alpha0.1_th0.1.py
 python DDP_linear.py configs/linear/cifar10_res18.py --load ./checkpoints/small/cifar10/moco_alpha0.1_th0.1/last.pth
 
 # CIFAR-100
-python DDP_linear.py configs/linear/cifar100_res18.py --load ./checkpoints/small/cifar10/simsiam_alpha0.1_th0.1/last.pth
+python DDP_linear.py configs/linear/cifar100_res18.py --load ./checkpoints/small/cifar100/simsiam_alpha0.1_th0.1/last.pth
 ```
 
 More models and datasets coming soon.
