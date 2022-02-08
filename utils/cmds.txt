@@ -1,0 +1,38 @@
+# submit job
+sbatch --exclude=c197-082,c199-071 scripts/cifar100_beta0101.slurm
+
+# interactive usage
+idev -p rtx-dev -N 1 -n 4 -t 02:00:00
+idev -p rtx-dev -N 2 -n 8 -t 00:30:00
+
+# submit a job script
+sbatch --exclude=c197-082,c199-071 scripts/slurm/SimCLR_DDP_cifar100.slurm
+sbatch /PATH/TO/job.slurm
+sbatch scripts/slurm/simclr_v0.slurm
+
+# check your job status
+squeue -u your_account
+
+# queue status
+sinfo -S+P -o "%18P %8a %20F"
+
+# detailed info
+scontrol show job=xxx
+
+# view requested nodes ID
+squeue | grep your_account
+
+# delete your job
+scancel job_ID
+
+# display estimated start time for job
+squeue --start -j job_ID
+
+# view loaded module
+module list
+
+# view avail module
+module avail
+
+# view nodes local file space
+ssh c196-032 df

@@ -8,4 +8,26 @@ This is the official PyTorch implementation of the [ContrastiveCrop paper](https
   year={2021}
 }
 ```
-Training code coming soon.
+## Preparation
+1. Create a python enviroment with `pytorch >= 1.8.1`.
+2. `pip install -r requirements.txt`
+3. Modify dataset `root` in the config file.
+
+## Pre-train
+```
+# MoCo
+python DDP_moco_ccrop.py configs/small/cifar10/moco_alpha0.1_th0.1.py
+
+# SimSiam
+python DDP_simsiam_ccrop.py configs/small/cifar10/simsiam_alpha0.1_th0.1.py
+```
+## Linear Evaluation
+```
+# CIFAR-10
+python DDP_linear.py configs/linear/cifar10_res18.py --load ./checkpoints/small/cifar10/moco_alpha0.1_th0.1/last.pth
+
+# CIFAR-100
+python DDP_linear.py configs/linear/cifar100_res18.py --load ./checkpoints/small/cifar10/simsiam_alpha0.1_th0.1/last.pth
+```
+
+More models and datasets coming soon.

@@ -1,0 +1,9 @@
+.idea/
+tmp/
+checkpoints/
+detection/output/
+__pycache__/
+*.swp
+*.pyc
+stdouterr/
+demo/
