@@ -8,6 +8,7 @@ This is the official PyTorch implementation of the [ContrastiveCrop paper](https
   year={2021}
 }
 ```
+This repo includes PyTorch implementation of SimCLR, MoCo, BYOL and SimSiam, as well as their DDP training code.
 ## Preparation
 1. Create a python enviroment with `pytorch >= 1.8.1`.
 2. `pip install -r requirements.txt`
