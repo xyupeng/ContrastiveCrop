@@ -8,7 +8,7 @@ class CIFAR10_boxes(datasets.CIFAR10):
         super().__init__(train=train, root=root, **kwargs)
         self.transform_rcrop = transform_rcrop
         self.transform_ccrop = transform_ccrop
-        self.boxes = torch.tensor([0, 0, 31, 31]).repeat(self.__len__(), 1)
+        self.boxes = torch.tensor([0., 0., 1., 1.]).repeat(self.__len__(), 1)
         self.use_box = True
 
     def __getitem__(self, index):
@@ -29,7 +29,7 @@ class CIFAR100_boxes(datasets.CIFAR100):
         super().__init__(train=train, root=root, **kwargs)
         self.transform_rcrop = transform_rcrop
         self.transform_ccrop = transform_ccrop
-        self.boxes = torch.tensor([0, 0, 31, 31]).repeat(self.__len__(), 1)
+        self.boxes = torch.tensor([0., 0., 1., 1.]).repeat(self.__len__(), 1)
         self.use_box = True
 
     def __getitem__(self, index):
