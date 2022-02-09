@@ -2,7 +2,7 @@
 
 # model
 dim, pred_dim = 512, 128
-model = dict(type='ResNet', depth=18, num_classes=dim, maxpool=False)
+model = dict(type='ResNet', depth=18, num_classes=dim, maxpool=False, zero_init_residual=True)
 simsiam = dict(dim=dim, pred_dim=pred_dim)
 loss = dict(type='CosineSimilarity', dim=1)
 

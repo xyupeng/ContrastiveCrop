@@ -1,10 +1,9 @@
-# python DDP_simsiam_ccrop.py path/to/this/config
+# python DDP_simclr_ccrop.py path/to/this/config
 
 # model
-dim, pred_dim = 512, 128
-model = dict(type='ResNet', depth=18, num_classes=dim, maxpool=False, zero_init_residual=True)
-simsiam = dict(dim=dim, pred_dim=pred_dim)
-loss = dict(type='CosineSimilarity', dim=1)
+dim = 128
+model = dict(type='ResNet', depth=18, num_classes=dim, maxpool=False)
+loss = dict(type='NT_Xent_dist', temperature=0.5, base_temperature=0.07)
 
 # data
 root = '/path/to/your/dataset'
@@ -43,14 +42,13 @@ data = dict(
 )
 
 # boxes
-warmup_epochs = 100
+warmup_epochs = 500
 loc_interval = 100
 box_thresh = 0.10
 
 # training optimizer & scheduler
 epochs = 500
 lr = 0.5
-fix_pred_lr = True
 optimizer = dict(type='SGD', lr=lr, momentum=0.9, weight_decay=1e-4)
 lr_cfg = dict(  # passed to adjust_learning_rate(cfg=lr_cfg)
     type='Cosine',
