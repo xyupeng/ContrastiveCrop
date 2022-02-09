@@ -1,5 +1,7 @@
 ## Crafting Better Contrastive Views for Siamese Representation Learning
 
+<img src="figs/motivation.png"> 
+
 This is the official PyTorch implementation of the [ContrastiveCrop paper](https://arxiv.org/abs/2202.03278):
 ```
 @article{peng2021crafting,
