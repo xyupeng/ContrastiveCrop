@@ -50,6 +50,7 @@ box_thresh = 0.10
 # training optimizer & scheduler
 epochs = 500
 lr = 0.5
+fix_pred_lr = True
 optimizer = dict(type='SGD', lr=lr, momentum=0.9, weight_decay=1e-4)
 lr_cfg = dict(  # passed to adjust_learning_rate(cfg=lr_cfg)
     type='Cosine',
