@@ -16,7 +16,7 @@ from models import SimSiam, build_model
 from losses import build_loss
 from datasets import build_dataset, build_cifar_boxes
 
-from utils.util import AverageMeter, format_time, set_seed, adjust_learning_rate
+from utils.util import AverageMeter, format_time, set_seed, adjust_lr_simsiam
 from utils.config import Config, ConfigDict, DictAction
 
 
@@ -267,7 +267,7 @@ def main_worker(rank, world_size, cfg):
     print("==> Start training...")
     for epoch in range(start_epoch, cfg.epochs + start_epoch):
         train_sampler.set_epoch(epoch)
-        adjust_learning_rate(cfg.lr_cfg, optimizer, epoch)
+        adjust_lr_simsiam(cfg.lr_cfg, optimizer, epoch)
 
         # start ContrastiveCrop
         train_set.use_box = epoch >= cfg.warmup_epochs + start_epoch

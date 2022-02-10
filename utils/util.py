@@ -94,25 +94,26 @@ def accuracy(output, target, topk=(1,)):
         return res
 
 
-def adjust_learning_rate(cfg, optimizer, step):
-    def _get_lr(cfg, step):
-        lr = cfg.lr
-        if cfg.type == 'Cosine':  # Cosine Anneal
-            start_step = cfg.get('start_step', 1)
-            eta_min = lr * cfg.decay_rate
-            lr = eta_min + (lr - eta_min) * (1 + math.cos(math.pi * (step - start_step) / cfg.steps)) / 2
-        elif cfg.type == 'MultiStep':  # MultiStep
-            num_steps = np.sum(step > np.asarray(cfg.decay_steps))
-            lr = lr * (cfg.decay_rate ** num_steps)
-        else:
-            raise NotImplementedError(cfg.type)
-        return lr
+def _get_lr(cfg, step):
+    lr = cfg.lr
+    if cfg.type == 'Cosine':  # Cosine Anneal
+        start_step = cfg.get('start_step', 1)
+        eta_min = lr * cfg.decay_rate
+        lr = eta_min + (lr - eta_min) * (1 + math.cos(math.pi * (step - start_step) / cfg.steps)) / 2
+    elif cfg.type == 'MultiStep':  # MultiStep
+        num_steps = np.sum(step > np.asarray(cfg.decay_steps))
+        lr = lr * (cfg.decay_rate ** num_steps)
+    else:
+        raise NotImplementedError(cfg.type)
+    return lr
 
+
+def adjust_learning_rate(cfg, optimizer, step, batch_idx=0, num_batches=100):
     start_step = cfg.get('start_step', 1)
     if step < cfg.get('warmup_steps', 0) + start_step:
         warmup_to = _get_lr(cfg, cfg.warmup_steps + 1)
-        p = (step - start_step) / cfg.warmup_steps
-        lr = cfg.warmup_from + (warmup_to - cfg.warmup_from) * p
+        p = (step - start_step + batch_idx / num_batches) / cfg.warmup_steps
+        lr = cfg.warmup_from + p * (warmup_to - cfg.warmup_from)
     else:
         lr = _get_lr(cfg, step)
 
@@ -121,12 +122,13 @@ def adjust_learning_rate(cfg, optimizer, step):
         param_group['lr'] = lr
 
 
-def warmup_learning_rate(cfg, epoch, batch_id, total_batches, optimizer):
-    if epoch <= cfg.warm_epochs:
-        p = (batch_id + (epoch - 1) * total_batches) / (cfg.warm_epochs * total_batches)
-        lr = cfg.warmup_from + p * (cfg.warmup_to - cfg.warmup_from)
-
-        for param_group in optimizer.param_groups:
+def adjust_lr_simsiam(cfg, optimizer, step):
+    init_lr = cfg.lr
+    lr = _get_lr(cfg, step)
+    for param_group in optimizer.param_groups:
+        if 'fix_lr' in param_group and param_group['fix_lr']:
+            param_group['lr'] = init_lr
+        else:
             param_group['lr'] = lr
 
 
