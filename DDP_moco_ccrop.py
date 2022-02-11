@@ -259,7 +259,7 @@ def main_worker(rank, world_size, cfg):
 
     # Start training
     print("==> Start training...")
-    for epoch in range(start_epoch, cfg.epochs + start_epoch):
+    for epoch in range(start_epoch, cfg.epochs + 1):
         train_sampler.set_epoch(epoch)
         adjust_learning_rate(cfg.lr_cfg, optimizer, epoch)
 
