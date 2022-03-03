@@ -2,7 +2,7 @@
 
 <img src="figs/motivation.png"> 
 
-2021-03-03: The paper was accepted by CVPR 2022.
+**2021-03-03**: The paper was accepted by **CVPR 2022**!
 
 This is the official PyTorch implementation of the [ContrastiveCrop paper](https://arxiv.org/abs/2202.03278):
 ```
