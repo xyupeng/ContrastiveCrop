@@ -82,7 +82,7 @@ def load_weights(ckpt_path, model, optimizer, resume=False):
         optimizer.load_state_dict(ckpt['optimizer_state'])
     else:
         if 'model_state' in ckpt.keys():  # simclr
-            state_dict = ckpt['model_state']
+            state_dict = ckpt['simclr_state']
             new_state_dict = {}
             for k, v in state_dict.items():
                 newk = k
