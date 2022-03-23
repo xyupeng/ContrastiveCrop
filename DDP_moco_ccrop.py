@@ -14,7 +14,7 @@ import torch.nn.functional as F
 from builder import build_optimizer, build_logger
 from models import MoCo, build_model
 from losses import build_loss
-from datasets import build_dataset, build_cifar_boxes
+from datasets import build_dataset, build_dataset_ccrop
 
 from utils.util import AverageMeter, format_time, set_seed, adjust_learning_rate
 from utils.config import Config, ConfigDict, DictAction
@@ -222,7 +222,7 @@ def main_worker(rank, world_size, cfg):
     bsz_gpu = int(cfg.batch_size / cfg.world_size)
     print('batch_size per gpu:', bsz_gpu)
 
-    train_set = build_cifar_boxes(cfg.data.train)
+    train_set = build_dataset_ccrop(cfg.data.train)
     len_ds = len(train_set)
     train_sampler = torch.utils.data.distributed.DistributedSampler(train_set, shuffle=True)
     train_loader = torch.utils.data.DataLoader(
