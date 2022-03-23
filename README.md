@@ -1,4 +1,4 @@
-## Crafting Better Contrastive Views for Siamese Representation Learning
+## Crafting Better Contrastive Views for Siamese Representation Learning (CVPR 2022)
 
 <img src="figs/motivation.png"> 
 
