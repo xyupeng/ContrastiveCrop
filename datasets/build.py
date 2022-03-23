@@ -20,7 +20,7 @@ def build_dataset(cfg):
     return ds
 
 
-def build_cifar_boxes(cfg):
+def build_dataset_ccrop(cfg):
     args = cfg.copy()
 
     # build transform

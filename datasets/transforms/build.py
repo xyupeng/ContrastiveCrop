@@ -1,4 +1,3 @@
-# import datasets.transform as transform
 from datasets import transforms
 
 
