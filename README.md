@@ -2,7 +2,7 @@
 
 <img src="figs/motivation.png"> 
 
-**2022-03-29**: The paper was accepted as **CVPR 2022 Oral** paper!
+**2022-03-29**: The paper was selected as a **CVPR 2022 Oral** paper!
 
 **2022-03-03**: The paper was accepted by **CVPR 2022**!
 
