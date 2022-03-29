@@ -1,8 +1,10 @@
-## Crafting Better Contrastive Views for Siamese Representation Learning (CVPR 2022)
+## Crafting Better Contrastive Views for Siamese Representation Learning (CVPR 2022 Oral)
 
 <img src="figs/motivation.png"> 
 
-**2021-03-03**: The paper was accepted by **CVPR 2022**!
+**2022-03-29**: The paper was accepted as **CVPR 2022 Oral** paper!
+
+**2022-03-03**: The paper was accepted by **CVPR 2022**!
 
 This is the official PyTorch implementation of the [ContrastiveCrop paper](https://arxiv.org/abs/2202.03278):
 ```
