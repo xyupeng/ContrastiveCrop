@@ -15,7 +15,7 @@ This is the official PyTorch implementation of the [ContrastiveCrop paper](https
   year={2022}
 }
 ```
-This repo includes PyTorch implementation of SimCLR, MoCo, BYOL and SimSiam, as well as their DDP training code.
+This repo includes PyTorch implementation of **SimCLR**, **MoCo**, **BYOL** and **SimSiam**, as well as their DDP training code.
 ## Preparation
 1. Create a python enviroment with `pytorch >= 1.8.1`.
 2. `pip install -r requirements.txt`
@@ -23,12 +23,22 @@ This repo includes PyTorch implementation of SimCLR, MoCo, BYOL and SimSiam, as 
 
 ## Pre-train
 ```
-# MoCo, CIFAR-10
+# MoCo, CIFAR-10, CCrop
 python DDP_moco_ccrop.py configs/small/cifar10/moco_alpha0.1_th0.1.py
 
-# SimSiam, CIFAR-100
+# SimSiam, CIFAR-100, CCrop
 python DDP_simsiam_ccrop.py configs/small/cifar100/simsiam_alpha0.1_th0.1.py
 ```
+We also recommend trying an even simpler version of ContrastiveCrop, named **SimCCrop**, 
+that simply fixes a box at the center of the image with half height & width of that image.
+**SimCCrop** even does not require localization and thus adds **NO** extra training overhead.
+It should work well on almost 'object-centric' datasets.
+```
+# MoCo, SimCCrop
+python DDP_moco_ccrop.py configs/small/cifar10/moco_simccrop.py
+python DDP_moco_ccrop.py configs/small/cifar100/moco_simccrop.py
+```
+
 ## Linear Evaluation
 ```
 # CIFAR-10
