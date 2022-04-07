@@ -24,10 +24,16 @@ This repo includes PyTorch implementation of **SimCLR**, **MoCo**, **BYOL** and 
 ## Pre-train
 ```
 # MoCo, CIFAR-10, CCrop
-python DDP_moco_ccrop.py configs/small/cifar10/moco_alpha0.1_th0.1.py
+python DDP_moco_ccrop.py configs/small/cifar10/moco_ccrop.py
 
 # SimSiam, CIFAR-100, CCrop
-python DDP_simsiam_ccrop.py configs/small/cifar100/simsiam_alpha0.1_th0.1.py
+python DDP_simsiam_ccrop.py configs/small/cifar100/simsiam_ccrop.py
+
+# MoCo V2, IN-200, CCrop
+python DDP_moco_ccrop.py configs/IN200/mocov2_ccrop.py
+
+# MoCo V2, IN-1K, CCrop
+python DDP_moco_ccrop.py configs/IN1K/mocov2_ccrop.py
 ```
 We also recommend trying an even simpler version of ContrastiveCrop, named **SimCCrop**, 
 that simply fixes a box at the center of the image with half height & width of that image.
@@ -42,10 +48,16 @@ python DDP_moco_ccrop.py configs/small/cifar100/moco_simccrop.py
 ## Linear Evaluation
 ```
 # CIFAR-10
-python DDP_linear.py configs/linear/cifar10_res18.py --load ./checkpoints/small/cifar10/moco_alpha0.1_th0.1/last.pth
+python DDP_linear.py configs/linear/cifar10_res18.py --load ./checkpoints/small/cifar10/moco_ccrop/last.pth
 
 # CIFAR-100
-python DDP_linear.py configs/linear/cifar100_res18.py --load ./checkpoints/small/cifar100/simsiam_alpha0.1_th0.1/last.pth
+python DDP_linear.py configs/linear/cifar100_res18.py --load ./checkpoints/small/cifar100/simsiam_ccrop/last.pth
+
+# IN-200 
+python DDP_linear.py configs/linear/IN200_res50.py --load ./checkpoints/IN200/mocov2_ccrop/last.pth
+
+# IN-1K
+python DDP_linear.py configs/linear/IN1K_res50.py --load ./checkpoints/IN1K/mocov2_ccrop/last.pth
 ```
 
 More models and datasets coming soon.
