@@ -264,7 +264,7 @@ def main_worker(rank, world_size, cfg):
         adjust_learning_rate(cfg.lr_cfg, optimizer, epoch)
 
         # start ContrastiveCrop
-        train_set.use_box = epoch >= cfg.warmup_epochs + start_epoch
+        train_set.use_box = epoch >= cfg.warmup_epochs + 1
 
         # train; all processes
         train(train_loader, model, criterion, optimizer, epoch, cfg, logger, writer)
