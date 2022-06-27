@@ -6,7 +6,7 @@ model = dict(type='ResNet', depth=18, num_classes=dim, maxpool=False)
 loss = dict(type='NT_Xent_dist', temperature=0.5, base_temperature=0.07)
 
 # data
-root = './data/tiny-imagenet-200'
+root = './data/tiny-imagenet-200/train'
 mean = (0.4802, 0.4481, 0.3975)
 std = (0.2302, 0.2265, 0.2262)
 batch_size = 512

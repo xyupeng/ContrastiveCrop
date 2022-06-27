@@ -7,7 +7,7 @@ byol = dict(dim=hidden_dim, pred_dim=128, m=0.996)
 loss = dict(type='CosineSimilarity', dim=1)
 
 # data
-root = '/home/yidi/kaiwang/public_data/'
+root = './data'
 mean = (0.5071, 0.4867, 0.4408)
 std = (0.2675, 0.2565, 0.2761)
 batch_size = 512

@@ -5,8 +5,8 @@ model = dict(type='ResNet', depth=50, num_classes=1000, maxpool=True)
 loss = dict(type='CrossEntropyLoss')
 
 # data
-root_train = './data/imagenet/train'
-root_val = './data/imagenet/val'
+root_train = './data/ImageNet/train'
+root_val = './data/ImageNet/val'
 mean = (0.485, 0.456, 0.406)
 std = (0.229, 0.224, 0.225)
 batch_size = 256

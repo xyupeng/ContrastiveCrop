@@ -7,7 +7,7 @@ moco = dict(dim=dim, K=65536, m=0.999, T=0.20, mlp=True)
 loss = dict(type='CrossEntropyLoss')
 
 # data
-root_train = '/data/imagenet/train'
+root_train = 'data/ImageNet/train'
 mean = (0.485, 0.456, 0.406)
 std = (0.229, 0.224, 0.225)
 batch_size = 256

@@ -7,7 +7,7 @@ simsiam = dict(dim=dim, pred_dim=pred_dim)
 loss = dict(type='CosineSimilarity', dim=1)
 
 # data
-root = '/path/to/your/dataset'
+root = './data'
 mean = (0.4914, 0.4822, 0.4465)
 std = (0.2023, 0.1994, 0.2010)
 batch_size = 512

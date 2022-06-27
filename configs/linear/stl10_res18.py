@@ -3,7 +3,7 @@ model = dict(type='ResNet', depth=18, num_classes=10, maxpool=False)
 loss = dict(type='CrossEntropyLoss')
 
 # dataset
-root = './data/stl10'
+root = './data'
 mean = (0.4406, 0.4273, 0.3858)
 std = (0.2312, 0.2265, 0.2237)
 batch_size = 512

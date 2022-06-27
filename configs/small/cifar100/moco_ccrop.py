@@ -7,7 +7,7 @@ moco = dict(dim=dim, K=65536, m=0.999, T=0.20, mlp=True)
 loss = dict(type='CrossEntropyLoss')
 
 # data
-root = '/path/to/your/dataset'
+root = './data'
 mean = (0.5071, 0.4867, 0.4408)
 std = (0.2675, 0.2565, 0.2761)
 batch_size = 512
