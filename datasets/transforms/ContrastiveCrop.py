@@ -41,10 +41,10 @@ class ContrastiveCrop(RandomResizedCrop):  # adaptive beta
 
             if 0 < w <= width and 0 < h <= height:
                 h0, w0, h1, w1 = box
-                ch0 = max(int(height * h0) - h//2, 0)
-                ch1 = min(int(height * h1) - h//2, height - h)
-                cw0 = max(int(width * w0) - w//2, 0)
-                cw1 = min(int(width * w1) - w//2, width - w)
+                ch0 = min(max(int(height * h0) - h//2, 0), height - h)
+                ch1 = min(max(int(height * h1) - h//2, 0), height - h)
+                cw0 = min(max(int(width * w0) - w//2, 0), width - w)
+                cw1 = min(max(int(width * w1) - w//2, 0), width - w)
 
                 i = ch0 + int((ch1 - ch0) * self.beta.sample())
                 j = cw0 + int((cw1 - cw0) * self.beta.sample())
