@@ -1,4 +1,5 @@
 from .cifar import CIFAR10_boxes, CIFAR100_boxes
+from .stl10 import STL10_boxes
 from .imagenet_subset import ImageFolderSubset, ImageFolderSubsetCCrop
 from .imagenet import ImageFolderCCrop
 

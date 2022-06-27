@@ -6,7 +6,7 @@ model = dict(type='ResNet', depth=18, num_classes=dim, maxpool=False)
 loss = dict(type='NT_Xent_dist', temperature=0.5, base_temperature=0.07)
 
 # data
-root = './data/stl10'
+root = './data'
 mean = (0.4406, 0.4273, 0.3858)
 std = (0.2312, 0.2265, 0.2237)
 batch_size = 512
