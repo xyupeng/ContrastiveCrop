@@ -19,7 +19,24 @@ This repo includes PyTorch implementation of **SimCLR**, **MoCo**, **BYOL** and 
 ## Preparation
 1. Create a python enviroment with `pytorch >= 1.8.1`.
 2. `pip install -r requirements.txt`
-3. Modify dataset `root` in the config file.
+
+
+## Datasets
+Please download and organize the datasets in this structure:
+```
+ContrastiveCrop
+├── data/
+    ├── ImageNet/
+    │   ├── train/ 
+    │   ├── val/
+    ├── cifar-10-batches-py/
+    ├── cifar-100-python/
+    ├── stl10_binary/
+    ├── tiny-imagenet-200/
+    │   ├── train/
+    │   ├── val/
+```
+Use this [script](https://gist.github.com/moskomule/2e6a9a463f50447beca4e64ab4699ac4) to prepare tiny-imagenet-200.
 
 ## Pre-train
 ```
